@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![Saudi Map Icon](saudi-map-icon.svg)
+<img src="saudi-map-provinces.svg" alt="Saudi Map" width="400">
 
-**Open-source SVG icons for Saudi Arabia map and its 13 administrative provinces**
+**Open-source SVG map of Saudi Arabia with all 13 administrative provinces**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -19,7 +19,7 @@
 
 ### About
 
-This project provides free, open-source SVG icons for Saudi Arabia, designed to fill the gap in icon libraries like Font Awesome that lack Saudi-specific regional icons. Perfect for:
+This project provides a free, open-source SVG map of Saudi Arabia with all 13 provinces, designed to fill the gap in icon libraries like Font Awesome that lack Saudi-specific regional icons. Perfect for:
 
 - Web applications serving Saudi users
 - Flight tracking systems (domestic vs international)
@@ -31,9 +31,8 @@ This project provides free, open-source SVG icons for Saudi Arabia, designed to 
 
 | File | Description | Use Case |
 |------|-------------|----------|
-| `saudi-map-icon.svg` | Simplified Saudi Arabia silhouette | Icon libraries, buttons, badges |
 | `saudi-map-provinces.svg` | Detailed map with all 13 provinces | Interactive maps, dashboards |
-| `saudi-map-provinces-ar.svg` | Provinces with Arabic labels | Arabic interfaces |
+| `saudi-map-demo.html` | Interactive demo page | Testing & preview |
 
 ### Installation
 
@@ -43,40 +42,21 @@ This project provides free, open-source SVG icons for Saudi Arabia, designed to 
 git clone https://github.com/khamuqbil/saudi-map-icons.git
 ```
 
-#### CDN (coming soon)
+#### CDN
 ```html
-<img src="https://cdn.jsdelivr.net/gh/khamuqbil/saudi-map-icons/saudi-map-icon.svg" alt="Saudi Arabia">
+<img src="https://cdn.jsdelivr.net/gh/khamuqbil/saudi-map-icons/saudi-map-provinces.svg" alt="Saudi Arabia" width="300">
 ```
 
 ### Usage
 
 #### As an HTML Image
 ```html
-<img src="saudi-map-icon.svg" alt="Saudi Arabia" width="32" height="32">
+<img src="saudi-map-provinces.svg" alt="Saudi Arabia" width="300">
 ```
 
-#### Inline SVG (recommended for styling)
+#### As an Object (for interactivity)
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="32" height="32">
-  <path fill="currentColor" d="M322.1 252l0-1-51.2-65.8s-12..."/>
-</svg>
-```
-
-#### CSS Background
-```css
-.saudi-icon {
-  background-image: url('saudi-map-icon.svg');
-  background-size: contain;
-  width: 32px;
-  height: 32px;
-}
-```
-
-#### With Font Awesome (as custom icon)
-```html
-<!-- Use alongside Font Awesome -->
-<i class="fas fa-globe-americas"></i> <!-- International -->
-<img src="saudi-map-icon.svg" class="fa-icon-custom"> <!-- Domestic Saudi -->
+<object data="saudi-map-provinces.svg" type="image/svg+xml" id="saudi-map" width="400"></object>
 ```
 
 #### Interactive Province Map (JavaScript)
@@ -86,13 +66,14 @@ git clone https://github.com/khamuqbil/saudi-map-icons.git
 <script>
 document.getElementById('saudi-map').addEventListener('load', function() {
   const svg = this.contentDocument;
-  const provinces = svg.querySelectorAll('.saudi-map-icons');
+  const provinces = svg.querySelectorAll('.saudi-province');
 
   provinces.forEach(province => {
     province.addEventListener('click', function() {
-      const code = this.id;        // e.g., "SA-12"
-      const name = this.getAttribute('title'); // e.g., "Al-jouf"
-      console.log(`Clicked: ${name} (${code})`);
+      const code = this.id;                      // e.g., "SA-12"
+      const name = this.getAttribute('title');   // e.g., "Al-Jouf"
+      const nameAr = this.dataset.nameAr;        // e.g., "الجوف"
+      console.log(`Clicked: ${name} / ${nameAr} (${code})`);
     });
   });
 });
@@ -167,14 +148,12 @@ Created by [Khalid Alkhaldi](https://github.com/khamuqbil) as part of the [Jouf 
 
 #### كصورة HTML
 ```html
-<img src="saudi-map-icon.svg" alt="المملكة العربية السعودية" width="32" height="32">
+<img src="saudi-map-provinces.svg" alt="المملكة العربية السعودية" width="300">
 ```
 
-#### كـ SVG مضمن (موصى به للتنسيق)
+#### ككائن تفاعلي
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="32" height="32" dir="rtl">
-  <path fill="currentColor" d="M322.1 252l0-1-51.2-65.8s-12..."/>
-</svg>
+<object data="saudi-map-provinces.svg" type="image/svg+xml" id="saudi-map" width="400"></object>
 ```
 
 ### رموز المناطق
